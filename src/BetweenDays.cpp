@@ -30,5 +30,58 @@ struct node{
 
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	
+	if (date1head == NULL && date2head == NULL)
+		return -1;
+	int day1[2], month1[2], year1[4];
+
+	struct node *ptr = date1head;
+	day1[0] = ptr->data;
+	ptr = ptr->next;
+	day1[1] = ptr->data;
+	ptr = ptr->next;
+	month1[0] = ptr->data;
+	ptr = ptr->next;
+	month1[1] = ptr->data;
+	ptr = ptr->next;
+	year1[0] = ptr->data;
+	ptr = ptr->next;
+	year1[1] = ptr->data;
+	ptr = ptr->next;
+	year1[2] = ptr->data;
+	ptr = ptr->next;
+	year1[3] = ptr->data;
+	ptr = ptr->next;
+
+	int day2[2], month2[2], year2[4];
+
+	struct node *ptr1 = date2head;
+	day2[0] = ptr1->data;
+	ptr1 = ptr1->next;
+	day2[1] = ptr1->data;
+	ptr1 = ptr1->next;
+	month2[0] = ptr1->data;
+	ptr1 = ptr1->next;
+	month2[1] = ptr1->data;
+	ptr1 = ptr1->next;
+	year2[0] = ptr1->data;
+	ptr1 = ptr1->next;
+	year2[1] = ptr1->data;
+	ptr1 = ptr1->next;
+	year2[2] = ptr1->data;
+	ptr1 = ptr1->next;
+	year2[3] = ptr1->data;
+	ptr1 = ptr1->next;
+
+	int d,days,d1,d2;
+	d = year2 - year1;
+	if (d != 0)
+		days = d * 365;
+	d1 = month2 - month1;
+	if (d1 != 0)
+		days =days+ d1 * 30;
+	d2 = day2 - day1;
+	days = days + d2;
+
+	return days;
 }
